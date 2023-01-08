@@ -58,7 +58,7 @@
           <!-- 画布区域 -->
           <div style="width: 100%;position: relative; background:#F1F1F1;">
             <div class="canvas-box">
-              <div id="canvas"></div>
+              <canvas id="canvas"></canvas>
             </div>
           </div>
           <!-- 属性区域 -->
@@ -112,7 +112,7 @@ const event = new EventHandle()
 export default {
   name: 'HomeView',
   setup() {
-    const canvas = new fabric.Canvas('teste-oie');
+    const canvas = new fabric.Canvas('canvas');
     canvas.c = canvas;
     canvas.set('backgroundColor', '#fff')
     return { canvas, fabric, event };
