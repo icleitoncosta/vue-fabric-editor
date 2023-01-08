@@ -22,6 +22,7 @@ import { downFontByJSON } from '@/utils/utils'
 export default {
   name: 'ToolBar',
   mixins: [select],
+  inject: ['$http'],
   data() {
     return {
       jsonFile: null,

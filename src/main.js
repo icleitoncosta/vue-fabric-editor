@@ -11,8 +11,8 @@ import '@/assets/fonts/font.css';
 import { i18n } from "./i18n";
 
 import ptBR from 'view-ui-plus/dist/locale/pt-BR';
-import enUS from 'view-ui-plus/dist/locale/pt-BR';
-import zhCN from 'view-ui-plus/dist/locale/pt-BR';
+import enUS from 'view-ui-plus/dist/locale/en-US';
+import zhCN from 'view-ui-plus/dist/locale/zh-CN';
 
 let locale = zhCN;
 if(i18n.locale === 'pt') {
@@ -23,8 +23,8 @@ if(i18n.locale === 'pt') {
 
 
 createApp(App)
-  .use(ViewUIPlus, { locale: locale })
   .use(router)
+  .use(ViewUIPlus, { locale: locale })
   .use(VueClipboard)
   .use(svgIcon)
   .use(i18n)

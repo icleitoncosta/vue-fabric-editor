@@ -58,7 +58,7 @@
           <!-- 画布区域 -->
           <div style="width: 100%;position: relative; background:#F1F1F1;">
             <div class="canvas-box">
-              <canvas id="canvas"></canvas>
+              <div id="canvas"></div>
             </div>
           </div>
           <!-- 属性区域 -->
@@ -112,8 +112,13 @@ const event = new EventHandle()
 export default {
   name: 'HomeView',
   setup() {
-    const canvas = {};
+    const canvas = new fabric.Canvas('teste-oie');
+    canvas.c = canvas;
+    canvas.set('backgroundColor', '#fff')
     return { canvas, fabric, event };
+  },
+  provide() {
+    return {canvas: this.canvas, fabric, event: this.event }
   },
   data() {
     return {
@@ -129,16 +134,9 @@ export default {
   created(){
      //this.$Spin.show(); //todo
   },
-  provide() {
-    this.canvas.c = new fabric.Canvas('canvas');
-    const canvas = this.canvas;
-    const event = this.event;
-    return { canvas, fabric, event };
-  },
   mounted() {
-      //this.canvas.set('backgroundColor', '#fff')
       this.show = true
-      //this.$Spin.hide();
+      this.$Spin.hide();
       this.event.init(this.canvas.c)
       hotKeyOnLRDU.call(this)
       hotKeyOnBackSpace.call(this)
