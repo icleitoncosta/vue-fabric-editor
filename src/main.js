@@ -1,16 +1,18 @@
-import Vue from 'vue';
+import { createApp } from "vue";
 import App from './App.vue';
-import router from './router';
+import router from './router/';
 import axios from 'axios'
-import ViewUI from 'view-design';
+import ViewUIPlus from 'view-ui-plus'
+import 'view-ui-plus/dist/styles/viewuiplus.css'
 import VueClipboard from 'vue-clipboard2'
 import svgIcon from '@/components/svgIcon/index.js';
 import 'view-design/dist/styles/iview.css';
 import '@/assets/fonts/font.css';
-import i18n from "./i18n";
-import ptBR from 'view-design/dist/locale/pt-BR';
-import enUS from 'view-design/dist/locale/pt-BR';
-import zhCN from 'view-design/dist/locale/pt-BR';
+import { i18n } from "./i18n";
+
+import ptBR from 'view-ui-plus/dist/locale/pt-BR';
+import enUS from 'view-ui-plus/dist/locale/pt-BR';
+import zhCN from 'view-ui-plus/dist/locale/pt-BR';
 
 let locale = zhCN;
 if(i18n.locale === 'pt') {
@@ -19,15 +21,12 @@ if(i18n.locale === 'pt') {
   locale = enUS;
 }
 
-Vue.use(ViewUI, { locale });
-Vue.use(VueClipboard);
-Vue.use(svgIcon);
 
-Vue.prototype.$http = axios
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  i18n,
-  render: (h) => h(App),
-}).$mount('#app');
+createApp(App)
+  .use(ViewUIPlus, { locale: locale })
+  .use(router)
+  .use(VueClipboard)
+  .use(svgIcon)
+  .use(i18n)
+  .provide('$http', axios)
+  .mount("#app");
