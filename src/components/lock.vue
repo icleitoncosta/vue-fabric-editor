@@ -25,7 +25,7 @@ export default {
     };
   },
   created(){
-     this.event.on('selectOne', (items) => {
+   this.event.on('selectOne', (items) => {
        this.isLock = !items[0].hasControls
        this.mSelectActive = items[0]
     })

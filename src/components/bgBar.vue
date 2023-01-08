@@ -13,17 +13,15 @@
     </Form>
     <Divider orientation="left" plain>{{ $t('color_macthing') }}</Divider>
     <div class="color-list">
-      <template v-for="(item, i) in colorList">
-        <div :key="item.label + i" class="item">
-          {{ item.label }}:
-          <span
-            v-for="color in item.color"
-            :key="color"
-            :style="`background:${color}`"
-            @click="setColor(color)"
-          ></span>
-        </div>
-      </template>
+      <div v-for="(item, i) in colorList" :key="item.label + i" class="item">
+        {{ item.label }}:
+        <span
+          v-for="color in item.color"
+          :key="color"
+          :style="`background:${color}`"
+          @click="setColor(color)"
+        ></span>
+      </div>
     </div>
     <Divider orientation="left" plain>{{ $t('background_texture') }}</Divider>
     <div>

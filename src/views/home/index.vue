@@ -109,13 +109,11 @@ import { hotKeyOnLRDU, hotKeyOnBackSpace, hotkeyOnCtrlC, hotkeyOnCtrlV } from '.
 import { fabric } from 'fabric';
 
 const event = new EventHandle()
-const canvas = {}
 export default {
   name: 'HomeView',
-  provide: {
-    canvas,
-    fabric,
-    event
+  setup() {
+    const canvas = {};
+    return { canvas, fabric, event };
   },
   data() {
     return {
@@ -129,14 +127,19 @@ export default {
     setSize,tools,bgBar,lock,layer, align, attribute, dele,importSvg,save,importJSON,clone,flip,importImg, importTmpl, centerAlign, group, zoom,svgEl,history
   },
   created(){
-     this.$Spin.show();
+     //this.$Spin.show(); //todo
+  },
+  provide() {
+    this.canvas.c = new fabric.Canvas('canvas');
+    const canvas = this.canvas;
+    const event = this.event;
+    return { canvas, fabric, event };
   },
   mounted() {
-      this.canvas = canvas.c = new fabric.Canvas('canvas');
-      this.canvas.set('backgroundColor', '#fff')
+      //this.canvas.set('backgroundColor', '#fff')
       this.show = true
-      this.$Spin.hide();
-      event.init(canvas.c)
+      //this.$Spin.hide();
+      this.event.init(this.canvas.c)
       hotKeyOnLRDU.call(this)
       hotKeyOnBackSpace.call(this)
       hotkeyOnCtrlC.call(this)

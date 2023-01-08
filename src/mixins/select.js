@@ -11,7 +11,7 @@ export default {
     }
   },
   created(){
-    this.event.on('selectOne', (e) => {
+   this.event.on('selectOne', (e) => {
       this.mSelectMode = 'one'
       this.mSelectId = e[0].id
       this.mSelectOneType = e[0].type

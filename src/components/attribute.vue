@@ -283,7 +283,6 @@ export default {
     };
   },
   created() {
-
     this.event.on('selectOne', (e) => {
       const activeObject = this.canvas.c.getActiveObjects()[0];
       if (activeObject) {
